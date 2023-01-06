@@ -3,13 +3,14 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     namespace 'com.example.a24_7_md'
+    buildToolsVersion "29.0.2"
     compileSdk 33
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.example.prepear"
+        applicationId "com.example.a24_7_md"
         minSdkVersion 26
         multiDexEnabled true
         targetSdkVersion 33
