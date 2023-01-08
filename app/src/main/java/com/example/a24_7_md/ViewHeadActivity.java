@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ public class ViewHeadActivity extends AppCompatActivity implements View.OnClickL
     private Button mouth;
     private Button ear;
     private Button brain;
+    private ImageView headImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +28,16 @@ public class ViewHeadActivity extends AppCompatActivity implements View.OnClickL
         nose = findViewById(R.id.nose);
         mouth = findViewById(R.id.mouth);
         brain = findViewById(R.id.brain);
+        headImage = findViewById(R.id.body_part);
 
+        headImage.setVisibility(View.VISIBLE);
         eye.setOnClickListener(this);
         nose.setOnClickListener(this);
         mouth.setOnClickListener(this);
         ear.setOnClickListener(this);
         brain.setOnClickListener(this);
+
+
 
     }
     @Override
