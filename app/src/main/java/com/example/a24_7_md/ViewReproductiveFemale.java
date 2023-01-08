@@ -29,7 +29,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
         ovaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Female reproductive");
                 list.add("Ovary");
@@ -41,7 +41,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
         cervixButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Female reproductive");
                 list.add("Cervix");
@@ -53,7 +53,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
         uterusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Female reproductive");
                 list.add("Uterus");
@@ -65,7 +65,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
         vaginaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Female reproductive");
                 list.add("Vagina");

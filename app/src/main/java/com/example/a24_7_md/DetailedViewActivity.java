@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class DetailedViewActivity extends AppCompatActivity implements Serializable {
@@ -51,7 +52,7 @@ public class DetailedViewActivity extends AppCompatActivity implements Serializa
         db.collection(dbStr.get(0)).document(dbStr.get(1)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String bodyNameStr = (String) documentSnapshot.get("name");
+                String bodyNameStr = ((String) documentSnapshot.get("name")).toLowerCase(Locale.ROOT);
                 bodyPartName.setText(bodyNameStr);
                 String myImageDrawableName = bodyNameStr + ".jpg";
                 int resID = getResources().getIdentifier(myImageDrawableName , "drawable", getPackageName());
@@ -96,7 +97,7 @@ public class DetailedViewActivity extends AppCompatActivity implements Serializa
             public void onClick(View v) {
                 Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
                 Disease passedDisease = diseases.get(0);
-                newIntent.putExtra("passedDisease", (Serializable) passedDisease);
+                newIntent.putExtra("passedDisease",  (Serializable) passedDisease);
             }
         });
 

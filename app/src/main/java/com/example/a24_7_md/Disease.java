@@ -1,8 +1,9 @@
 package com.example.a24_7_md;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Disease {
+public class Disease implements Serializable {
     private String name;
     private String description;
     private ArrayList<String> symptoms = new ArrayList<>();
