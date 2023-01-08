@@ -11,7 +11,7 @@ The purpose of our 24-7-MD android app:
 
 
 
-Reference:
-1, the main bodies (both female and male) graphs are using from the screen shots function of "3DBody" app. (with more detail in www.3dbody.com)
-2, the each detailed organs are also using from the screen shots function of "3DBody" app.
-3, the medication-related infomation shown on this app are mostly coming from the website of Mayo Clinic (https://www.mayoclinic.org/)
+<br />Reference:<br />
+1, the main bodies (both female and male) graphs are using from the screen shots function of "3DBody" app. (with more detail in www.3dbody.com)<br />
+2, the each detailed organs are also using from the screen shots function of "3DBody" app.<br />
+3, the medication-related infomation shown on this app are mostly coming from the website of Mayo Clinic (https://www.mayoclinic.org/)<br />
