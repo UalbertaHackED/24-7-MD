@@ -7,6 +7,8 @@ The purpose of our 24-7-MD android app:
 
 
 
+Future updates:<br />
+Provide a live real-time doctor chat in a vitrual talking room in app, which helps user who is immediately 
 
 
 
@@ -15,3 +17,5 @@ The purpose of our 24-7-MD android app:
 1, the main bodies (both female and male) graphs are using from the screen shots function of "3DBody" app. (with more detail in www.3dbody.com)<br />
 2, Each detailed organ is also from the screen shots function of "3DBody" app.<br />
 3, the medication-related infomation shown on this app are mostly coming from the website of Mayo Clinic (https://www.mayoclinic.org/)<br />
+
+
