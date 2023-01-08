@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         neckButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
 //                String[] list = new String[2];
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         footButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
                 list.add("Foot");
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         handButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
                 list.add("Hand");
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         armButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
                 list.add("Arm");
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         kneeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
                 list.add("Knee");
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         legButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
                 list.add("leg");
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         abdomenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, ViewAbdomenActivity.class);
+                Intent intent = new Intent(MainActivity.this, ViewAbdomen.class);
                 startActivity(intent);
             }
         });
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         chestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, ViewChestActivity.class);
+                Intent intent = new Intent(MainActivity.this, ViewChestActivity.class);
                 startActivity(intent);
             }
         });
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         headButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, ViewHeadActivity.class);
+                Intent intent = new Intent(MainActivity.this, ViewHeadActivity.class);
                 startActivity(intent);
             }
         });

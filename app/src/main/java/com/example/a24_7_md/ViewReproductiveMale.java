@@ -28,7 +28,7 @@ public class ViewReproductiveMale extends AppCompatActivity {
         penisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Male reproductive");
                 list.add("Penis");
@@ -41,7 +41,7 @@ public class ViewReproductiveMale extends AppCompatActivity {
         testicleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Male reproductive");
                 list.add("Testicle");
@@ -53,7 +53,7 @@ public class ViewReproductiveMale extends AppCompatActivity {
         prostateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, DetailedViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Male reproductive");
                 list.add("Prostate");
