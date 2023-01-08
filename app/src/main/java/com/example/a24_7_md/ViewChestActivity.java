@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class ViewChestActivity extends AppCompatActivity implements View.OnClickListener{
     private Button Heart;
     private Button Lung;
@@ -28,14 +30,15 @@ public class ViewChestActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, DetailedViewActivity.class);
-        intent.putExtra("collection", "Chest");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Chest");
         if (v == Heart){
-            intent.putExtra("document", "Heart");
+            list.add("Heart");
         }
         else{
-            intent.putExtra("document", "Lung");
+            list.add("Lung");
         }
-
+        intent.putExtra("list", list);
         startActivity(intent);
     }
 

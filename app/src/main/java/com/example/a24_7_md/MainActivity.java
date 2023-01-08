@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
 //                String[] list = new String[2];
-                ArrayList<String> list = new ArrayList<String>();
+                ArrayList<String> list = new ArrayList<>();
                 list.add("Others");
                 list.add("Neck");
                 intent.putExtra("list", list);
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
-                list.add("Foot");
+                list.add("Feet");
                 intent.putExtra("list", list);
                 startActivity(intent);
             }

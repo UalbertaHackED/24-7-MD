@@ -1,5 +1,7 @@
 package com.example.a24_7_md;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,116 +34,64 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 public class DetailedViewActivity extends AppCompatActivity implements Serializable {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<Disease> diseases = new ArrayList<>();
-    int iconCode;
+    public FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public ArrayList<Disease> diseases = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_view);
 
         TextView bodyPartName = findViewById(R.id.body_part_name_text);
-        TextView commonDisease1NameTextView = findViewById(R.id.common_disease1_text);
-        TextView commonDisease2NameTextView = findViewById(R.id.common_disease2_text);
-        TextView commonDisease3NameTextView = findViewById(R.id.common_disease3_text);
-        TextView commonDisease4NameTextView = findViewById(R.id.common_disease4_text);
-        TextView commonDisease5NameTextView = findViewById(R.id.common_disease5_text);
         ImageView bodyPartImageView = findViewById(R.id.detailed_body_part_image);
+        ListView diseaseList = findViewById(R.id.disease_listview);
+        ArrayAdapter<Disease> diseaseArrayAdapter = new CustomList(this, diseases);
+        diseaseList.setAdapter(diseaseArrayAdapter);
 
         Intent intent = getIntent();
-        List<String> dbStr = intent.getStringArrayListExtra("list");
+        ArrayList<String> dbStr = intent.getStringArrayListExtra("list");
+        Log.d(TAG, "onCreate: " + dbStr);
+        bodyPartName.setText(dbStr.get(1));
+        String myImageDrawableName = dbStr.get(1).toLowerCase();
+        int resID = getResources().getIdentifier(myImageDrawableName , "drawable", getPackageName());
+        bodyPartImageView.setImageResource(resID);
+        db
+                .collection(dbStr.get(0))
+                .document(dbStr.get(1))
+                .collection("diseases")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot doc: task.getResult()) {
+                                if (doc.exists()) {
+                                    String diseaseName = doc.getString("name");
+                                    String diseaseDescription = doc.getString("description");
+                                    String diseaseURL = doc.getString("reference");
+                                    List<String> diseaseSymptoms = (List<String>) doc.get("symptoms");
+                                    List<String> diseaseTreatments = (List<String>) doc.get("treatments");
+                                    Disease newDisease = new Disease(diseaseName, diseaseDescription, diseaseSymptoms, diseaseTreatments, diseaseURL);
+                                    diseaseArrayAdapter.add(newDisease);
+                                }
+                            }
+                            diseaseArrayAdapter.notifyDataSetChanged();
+                            Log.d(TAG, "onComplete: " + diseases.size());
+                        }
+                    }
+                });
 
-        db.collection(dbStr.get(0)).document(dbStr.get(1)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        diseaseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String bodyNameStr = ((String) documentSnapshot.get("name")).toLowerCase(Locale.ROOT);
-                bodyPartName.setText(bodyNameStr);
-                String myImageDrawableName = bodyNameStr + ".jpg";
-                int resID = getResources().getIdentifier(myImageDrawableName , "drawable", getPackageName());
-                bodyPartImageView.setImageResource(resID);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object clickedDiseaseItem = diseaseList.getItemAtPosition(position);
+                Disease clickedDisease = (Disease) clickedDiseaseItem;
+                Intent passedIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
+                passedIntent.putExtra("passedDisease", clickedDisease);
+                startActivity(passedIntent);
             }
         });
-
-        db.collection(dbStr.get(0)).document(dbStr.get(1)).collection("diseases").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                    String diseaseName = doc.getId();
-                    String diseaseDescription = (String) doc.get("description");
-                    String diseaseURL = (String) doc.get("reference");
-                    List<String> diseaseSymptoms = (List<String>) doc.get("symptoms");
-                    List<String> diseaseTreatments = (List<String>) doc.get("treatment");
-                    Disease disease = new Disease(diseaseName, diseaseDescription, (ArrayList<String>) diseaseSymptoms, (ArrayList<String>) diseaseTreatments, diseaseURL);
-
-                    diseases.add(disease);
-                }
-            }
-        });
-
-        if (diseases.get(0) != null) {
-            commonDisease1NameTextView.setText(diseases.get(0).getName());
-        }
-        if (diseases.get(1) != null) {
-            commonDisease2NameTextView.setText(diseases.get(1).getName());
-        }
-        if (diseases.get(2) != null) {
-            commonDisease3NameTextView.setText(diseases.get(2).getName());
-        }
-        if (diseases.get(3) != null) {
-            commonDisease4NameTextView.setText(diseases.get(3).getName());
-        }
-        if (diseases.get(4) != null) {
-            commonDisease5NameTextView.setText(diseases.get(4).getName());
-        }
-
-        commonDisease1NameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
-                Disease passedDisease = diseases.get(0);
-                newIntent.putExtra("passedDisease",  (Serializable) passedDisease);
-            }
-        });
-
-
-        commonDisease2NameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
-                Disease passedDisease = diseases.get(1);
-                newIntent.putExtra("passedDisease", (Serializable) passedDisease);
-            }
-        });
-
-        commonDisease3NameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
-                Disease passedDisease = diseases.get(2);
-                newIntent.putExtra("passedDisease", (Serializable) passedDisease);
-            }
-        });
-
-        commonDisease4NameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
-                Disease passedDisease = diseases.get(3);
-                newIntent.putExtra("passedDisease", (Serializable) passedDisease);
-            }
-        });
-
-        commonDisease5NameTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(getApplicationContext(), DiseaseInfoActivity.class);
-                Disease passedDisease = diseases.get(4);
-                newIntent.putExtra("passedDisease", (Serializable) passedDisease);
-            }
-        });
-
-
     }
 }

@@ -3,11 +3,16 @@ package com.example.a24_7_md;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 
 public class DiseaseInfoActivity extends AppCompatActivity implements Serializable {
 
@@ -17,40 +22,43 @@ public class DiseaseInfoActivity extends AppCompatActivity implements Serializab
         setContentView(R.layout.activity_disease_info);
 
         TextView diseaseNameText = findViewById(R.id.disease_name_text);
-        TextView diseaseDescriptionText = findViewById(R.id.disease_brief_description_text);
-        TextView diseaseSymptom1Text = findViewById(R.id.disease_symptom1_text);
-        TextView diseaseSymptom2Text = findViewById(R.id.disease_symptom2_text);
-        TextView diseaseSymptom3Text = findViewById(R.id.disease_symptom3_text);
-        TextView diseaseTreatment1Text = findViewById(R.id.disease_treatment1_text);
-        TextView diseaseTreatment2Text = findViewById(R.id.disease_treatment2_text);
-        TextView diseaseTreatment3Text = findViewById(R.id.disease_treatment3_text);
-
-
+        TextView diseaseSymptomText = findViewById(R.id.disease_symptoms_text);
+        TextView diseaseDescriptionText = findViewById(R.id.disease_info_text);
+        TextView diseaseTreatmentText = findViewById(R.id.disease_treatments_text);
+        TextView diseaseURLText = findViewById(R.id.disease_url_text);
 
         Intent receivedIntent = getIntent();
         Disease receivedDisease = (Disease) receivedIntent.getSerializableExtra("passedDisease");
 
+        ArrayList<String> diseaseSymptoms = (ArrayList<String>) receivedDisease.getSymptoms();
+        ArrayList<String> diseaseTreatments = (ArrayList<String>) receivedDisease.getTreatments();
+
+        String symptomStr = "";
+        String treatmentStr = "";
+
+        for (int i = 0; i < diseaseSymptoms.size(); i++) {
+            symptomStr += diseaseSymptoms.get(i) + "\n";
+        }
+
+        for (int i = 0; i < diseaseTreatments.size(); i++) {
+            treatmentStr += diseaseTreatments.get(i) + "\n";
+        }
+
         diseaseNameText.setText(receivedDisease.getName());
         diseaseDescriptionText.setText(receivedDisease.getDescription());
+        diseaseSymptomText.setText(symptomStr);
+        diseaseTreatmentText.setText(treatmentStr);
+        diseaseURLText.setText(receivedDisease.getReference());
 
-        if (receivedDisease.getSymptoms().get(0) != null) {
-            diseaseSymptom1Text.setText(receivedDisease.getSymptoms().get(0));
-        }
-        if (receivedDisease.getSymptoms().get(1) != null) {
-            diseaseSymptom2Text.setText(receivedDisease.getSymptoms().get(1));
-        }
-        if (receivedDisease.getSymptoms().get(2) != null) {
-            diseaseSymptom3Text.setText(receivedDisease.getSymptoms().get(2));
-        }
-        if (receivedDisease.getTreatments().get(0) != null) {
-            diseaseTreatment1Text.setText(receivedDisease.getTreatments().get(0));
-        }
-        if (receivedDisease.getTreatments().get(1) != null) {
-            diseaseTreatment2Text.setText(receivedDisease.getTreatments().get(1));
-        }
-        if (receivedDisease.getTreatments().get(2) != null) {
-            diseaseTreatment3Text.setText(receivedDisease.getTreatments().get(2));
-        }
+        diseaseURLText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(receivedDisease.getReference()));
+                startActivity(i);
+            }
+        });
+
     }
 
 
