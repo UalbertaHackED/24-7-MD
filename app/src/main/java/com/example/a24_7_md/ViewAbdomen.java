@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class ViewAbdomen extends AppCompatActivity implements View.OnClickListener{
     private Button Liver;
     private Button Kidney;
@@ -35,25 +37,24 @@ public class ViewAbdomen extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, DetailedViewActivity.class);
-        intent.putExtra("collection", "Abdomen");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Abdomen");
         if (v == Liver){
-            intent.putExtra("document", "Liver");
+            list.add("Liver");
         }
-        else if (v == Kidney){
-            intent.putExtra("document", "Kidney");
+        else if (v == Kidney) {
+            list.add("Kidney");
         }
-        else if (v == Stomach){
-            intent.putExtra("document", "Stomach");
+        else if (v == Stomach) {
+            list.add("Stomach");
         }
         else if (v == Spleen){
-            intent.putExtra("document", "Spleen");
+            list.add("Spleen");
         }
         else if (v == Intestine){
-            intent.putExtra("document", "Intestine");
+            list.add("Intestine");
         }
-
+        intent.putExtra("list", list);
         startActivity(intent);
-
-
     }
 }

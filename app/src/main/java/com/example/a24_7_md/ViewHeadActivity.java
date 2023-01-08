@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class ViewHeadActivity extends AppCompatActivity implements View.OnClickListener{
     private Button eye;
     private Button nose;
@@ -41,22 +43,24 @@ public class ViewHeadActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, DetailedViewActivity.class);
-        intent.putExtra("collection", "Head");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Head");
         if (v == eye){
-            intent.putExtra("document", "Eye");
+            list.add("Eye");
         }
         else if (v == ear){
-            intent.putExtra("document", "Ear");
+            list.add("Ear");
         }
         else if (v == mouth){
-            intent.putExtra("document", "Mouth");
+            list.add("Mouth");
         }
         else if (v == nose){
-            intent.putExtra("document", "Nose");
+            list.add("Nose");
         }
         else{
-            intent.putExtra("document", "Brain");
+            list.add("Brain");
         }
+        intent.putExtra("list", list);
         startActivity(intent);
     }
 

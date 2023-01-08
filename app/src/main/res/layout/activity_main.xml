@@ -213,17 +213,17 @@
 
     <Button
         android:id="@+id/hand_button"
-        android:layout_width="86dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="449dp"
-        android:layout_marginEnd="256dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="447dp"
+        android:layout_marginEnd="276dp"
+        android:background="@drawable/custom_button"
         android:text="hand"
         android:textAlignment="center"
-        android:background="@drawable/custom_button"
         android:textColor="@color/theme_blue"
         android:textStyle="bold" />
 

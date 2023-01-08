@@ -1,6 +1,8 @@
 package com.example.a24_7_md;
 
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         genderSwitch = findViewById(R.id.gender_switch);
         headButton = findViewById(R.id.head_button);
         neckButton = findViewById(R.id.neck_button);
-        handButton = findViewById(R.id.head_button);
+        handButton = findViewById(R.id.hand_button);
         armButton = findViewById(R.id.arm_button);
         legButton = findViewById(R.id.leg_button);
         kneeButton = findViewById(R.id.knee_button);
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
 //                String[] list = new String[2];
-                ArrayList<String> list = new ArrayList<String>();
+                ArrayList<String> list = new ArrayList<>();
                 list.add("Others");
                 list.add("Neck");
                 intent.putExtra("list", list);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
-                list.add("Foot");
+                list.add("Feet");
                 intent.putExtra("list", list);
                 startActivity(intent);
             }
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         handButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("TAG", "SDFDFJAJFDKJFAKFDJFSAJSAF");
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
@@ -157,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
                 list.add("Others");
-                list.add("leg");
+                list.add("Leg");
                 intent.putExtra("list", list);
                 startActivity(intent);
             }

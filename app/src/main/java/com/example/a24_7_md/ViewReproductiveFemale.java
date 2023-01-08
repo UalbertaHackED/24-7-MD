@@ -31,7 +31,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
-                list.add("Female reproductive");
+                list.add("FemaleReproductive");
                 list.add("Ovary");
                 intent.putExtra("list", list);
                 startActivity(intent);
@@ -43,7 +43,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
-                list.add("Female reproductive");
+                list.add("FemaleReproductive");
                 list.add("Cervix");
                 intent.putExtra("list", list);
                 startActivity(intent);
@@ -55,7 +55,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
-                list.add("Female reproductive");
+                list.add("FemaleReproductive");
                 list.add("Uterus");
                 intent.putExtra("list", list);
                 startActivity(intent);
@@ -67,7 +67,7 @@ public class ViewReproductiveFemale extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DetailedViewActivity.class);
                 ArrayList<String> list = new ArrayList<String>();
-                list.add("Female reproductive");
+                list.add("FemaleReproductive");
                 list.add("Vagina");
                 intent.putExtra("list", list);
                 startActivity(intent);

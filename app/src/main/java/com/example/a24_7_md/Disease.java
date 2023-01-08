@@ -2,15 +2,16 @@ package com.example.a24_7_md;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Disease implements Serializable {
     private String name;
     private String description;
-    private ArrayList<String> symptoms = new ArrayList<>();
-    private ArrayList<String> treatments = new ArrayList<>();
+    private List<String> symptoms = new ArrayList<>();
+    private List<String> treatments = new ArrayList<>();
     private String reference = new String();
 
-    public Disease(String name, String description, ArrayList<String> symptoms, ArrayList<String> treatments, String reference) {
+    public Disease(String name, String description, List<String> symptoms, List<String> treatments, String reference) {
         this.name = name;
         this.description = description;
         this.symptoms = symptoms;
@@ -34,7 +35,7 @@ public class Disease implements Serializable {
         this.description = description;
     }
 
-    public ArrayList<String> getSymptoms() {
+    public List<String> getSymptoms() {
         return symptoms;
     }
 
@@ -46,7 +47,7 @@ public class Disease implements Serializable {
         symptoms.add(symptom);
     }
 
-    public ArrayList<String> getTreatments() {
+    public List<String> getTreatments() {
         return treatments;
     }
 

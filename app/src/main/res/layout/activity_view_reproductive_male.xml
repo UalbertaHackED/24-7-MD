@@ -54,16 +54,6 @@
         android:layout_marginBottom="110dp"
         android:text="----------------" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="232dp"
-        android:layout_marginBottom="186dp"
-        android:text="--------------------" />
-
     <Button
         android:id="@+id/penis_button"
         android:layout_width="wrap_content"
@@ -74,18 +64,6 @@
         android:layout_marginBottom="65dp"
         android:background="@drawable/custom_button"
         android:text="penis"
-        android:textColor="@color/theme_blue" />
-
-    <Button
-        android:id="@+id/prostate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="146dp"
-        android:background="@drawable/custom_button"
-        android:text="prostate"
         android:textColor="@color/theme_blue" />
 
     <Button
