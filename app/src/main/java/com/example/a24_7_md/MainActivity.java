@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Button footButton;
     private Button chestButton;
     private Button abdomenButton;
+    private Button reproductiveButton;
     private ImageView maleWholeBody;
     private ImageView femaleWholeBody;
 
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         footButton = findViewById(R.id.foot_button);
         chestButton = findViewById(R.id.chest_button);
         abdomenButton = findViewById(R.id.abdomen_button);
+        reproductiveButton = findViewById(R.id.reproductive_button);
         maleWholeBody = findViewById(R.id.male_whole);
         femaleWholeBody = findViewById(R.id.female_whole);
 
@@ -162,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // passing data to show more clickable node for user to choose
-        // Abdomen, Chest, Head
+        // Abdomen, Chest, Head, reproductive
 
         abdomenButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +186,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(this, ViewHeadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        reproductiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Boolean genderIdentifier = genderSwitch.isChecked();
+                Intent intent;
+                if(genderIdentifier){
+                    intent = new Intent(this, ViewReproductiveFemale.class);
+                }else{
+                    intent = new Intent(this, ViewReproductiveMale.class);
+                }
                 startActivity(intent);
             }
         });
