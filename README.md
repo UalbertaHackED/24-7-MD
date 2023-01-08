@@ -8,7 +8,7 @@ The purpose of our 24-7-MD android app:
 
 
 Future updates:<br />
-Provide a live real-time doctor chat in a vitrual talking room in app, which helps user who is immediately 
+Provide a live real-time doctor chat in a vitrual talking room in app, which helps user who is immediately needs a doctor. This functionality will provide an opportunity for user to get in touch with doctors, even it is out of working time. <br />
 
 
 
