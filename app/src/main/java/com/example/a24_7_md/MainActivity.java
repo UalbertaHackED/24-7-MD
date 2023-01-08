@@ -195,10 +195,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Boolean genderIdentifier = genderSwitch.isChecked();
                 Intent intent;
-                if(genderIdentifier){
-                    intent = new Intent(this, ViewReproductiveFemale.class);
-                }else{
-                    intent = new Intent(this, ViewReproductiveMale.class);
+                if(genderIdentifier) {
+                    intent = new Intent(MainActivity.this, ViewReproductiveFemale.class);
+                } else{
+                    intent = new Intent(MainActivity.this, ViewReproductiveMale.class);
                 }
                 startActivity(intent);
             }
